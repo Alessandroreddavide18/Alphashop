@@ -1,0 +1,33 @@
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500px;
+    background-image: url('/assets/images/tavolo2.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    filter: brightness(0.6); 
+    z-index: -1; 
+  }
+
+  body{
+    background-color:whitesmoke;
+    margin-right: 280px;
+    margin-left: 280px;
+    height: 100%;
+  }  
+
+  
+  .btn-outline-orange {
+    color: #FFA500; 
+    border-color: #FFA500;
+  }
+  
+.btn-outline-orange:hover {
+    background-color: #FFA500; 
+    color: #fff; 
+  }
+  

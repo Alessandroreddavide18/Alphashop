@@ -1,0 +1,109 @@
+.imglogo{
+  background-image: url('/assets/images/logo.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 80px;
+  height: 75px;
+  z-index: -2;
+  border-radius: 75%;
+}
+.navbar{
+    position: sticky;
+    top: 0;
+    border: 2px solid black;
+    background-color: white;
+    z-index: 999;
+    max-height: 80px;
+}
+
+li{
+    list-style-type: none;
+}
+
+.btn-outline-orange {
+    color: #FFA500; 
+    border-color: #FFA500;
+  }
+  
+.btn-outline-orange:hover {
+    background-color: #FFA500; 
+    color: #fff; 
+  }
+
+i{
+    color: #FFA500;
+}  
+
+ li p{
+  color: #FFA500; 
+}   
+
+.nav-link{
+  font-size: 20px;
+}
+
+.nav-link:hover{
+  font-size: large;
+  color: #FFA500;
+  font-size: 22px;
+}
+
+.navbar-nav .nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px; 
+  background-color: #FFA500; 
+  transition: width 0.7s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+.Utentecus{
+  text-decoration: none;
+  color: black;
+  font-size: medium;
+}
+.Utentecus:hover{
+  text-decoration: none;
+  color: orange;
+  font-size: large;
+}
+/*zona admin*/
+.isadmin{
+  font-size: 11px;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.cerchio-lampeggiante {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #FFA500; 
+  animation: blink 3s infinite;
+  position: relative;
+  top: 12px;
+  left: 7px;
+}

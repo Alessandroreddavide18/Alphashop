@@ -1,0 +1,43 @@
+
+
+<div class="jumbotron-billboard" id="dynamicBackground" [style.backgroundImage]="'url(' + getCurrentImageUrl() + ')'" >
+  <h1>{{titolo}}</h1>      
+        <h3>{{sottotitolo}}</h3>
+        <ng-container *ngIf="showform">
+          <div class="form form-cus">
+            <div class="container my-5 d-flex flex-column justify-content-center align-items-center">
+
+              <label class="mx-3 my-2" for="userId"><h3 class="labelform">User Id</h3></label>
+              <input class="mx-3 label-cus" type="text" id="userId" placeholder="Nome utente" [(ngModel)] = "userId"> 
+            
+              <label class="mx-3 my-2" for="password"><h3 class="labelform">Password</h3></label>
+              <input class="mx-3 label-cus"  type="password" id="password" placeholder="Password" [(ngModel)] = "password">
+
+            </div>  
+            <button class="btn btn-outline-orange mx-3"  (click)="gestAuth()"><h5>Accedi</h5></button>
+            <div *ngIf="autenticato == false"> {{errMsg}} </div>
+          </div>
+        </ng-container>
+
+        
+        <ng-container *ngIf="showlogin">
+          <a href="#" id="signUp" class="btn btn-primary btn-lg">Accedi</a>
+          <a href="#" id="signIn" class="btn btn-primary btn-lg">Registrati</a>
+        </ng-container>
+
+
+        <ng-container *ngIf="showAccesLink">
+            <a href="/login" class="btn btn-outline-orange re-acces"><h4>Accedi</h4></a>
+        </ng-container>
+      
+        <ng-container *ngIf="showPulse">
+          <div class="pulse-container">
+            <div class="circle">
+              <div class="arrow-down"></div>
+            </div>
+          </div>
+        </ng-container>
+        
+
+      </div>
+

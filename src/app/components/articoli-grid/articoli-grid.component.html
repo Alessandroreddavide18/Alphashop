@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="col-12 d-flex justify-content-center my-3">
+        <a button (click)="Modifica('')" class="btn btn-outline-orange mx-2 d-flex justify-content-center align-items-center">Crea</a>
+    </div>
+</div>
+
+<header class="card-header sticky">
+
+    <div class="row">
+        <div class="col-2">
+
+        </div>
+        <div class="col-6">
+            <input type="text" class="form-control searchbar" placeholder="Cerca Codart o Descrizione"
+                [(ngModel)]="filter" (keyup.enter)="refresh()">
+        </div>
+
+          
+        <div class="col-2">
+            <select class="form-select selectcus">
+                <option>Tutti</option>
+                <option>Salse</option>
+                <option>Pasta</option>
+                <option>Carne</option>
+                <option>Vegetali</option>
+            </select>
+        </div>
+        <div class="col-2">
+            <select class="form-select selectcus">
+                <option>Nuovi</option>
+                <option>Offerte</option>
+                <option>I più acquistati</option>
+            </select>
+        </div>
+    </div>
+</header>
+
+<div class="errorbox alert alert-danger d-flex justify-content-center align-items-center my-2 mx-2" *ngIf="msgdelete">
+    {{ msgdelete }}
+  </div>
+
+<table id="article" class="table table-cus my-5 w-75 mx-auto border">
+    <thead>
+        <tr>
+            <th>Codart</th>
+            <th>Descrizione</th>
+            <th>Um</th>
+            <th>Quantita'</th>
+            <!-- <th>Prezzo</th> -->
+            <th>Stato</th>
+            <!-- <th>Inserimento</th> -->
+            <th>Aliquota IVA</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let article of articles$ | paginate : { itemsPerPage: righe, currentPage: pagina }">
+            <td>{{article.codArt}}</td>
+            <td>{{article.descrizione}}</td>
+            <td>{{article.um}}</td>
+            <td>{{article.pesoNetto}}</td>
+            <!-- <td>{{article.prezzo | currency : 'EUR'}}</td> -->
+            <td>
+                <span
+                    [ngClass]="article.idStatoArt === '1' ? 'badge rounded-pill bg-success' : 'badge rounded-pill bg-danger'">{{article.desStatoArt}}</span>
+            </td>
+            <!-- <td>{{article.dataCreazione | date: 'dd/MM/yyyy'}}</td> -->
+
+            <td>{{article.iva.idIva}}%</td>
+            
+                <div class="btn-group">
+                    <button class="btn btn-secondary btn-cus-crud btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="material-icons md-more_vert"></i>
+                    </button>
+                    <ul class="dropdown-menu text-center">
+                    <li> <button (click)="Modifica(article.codArt)" class="border-0 btn-cus-crud"> Modifica</button></li>
+                    <li><button (click)="Elimina(article.codArt)" class="border-0 btn-cus-crud"> Elimina </button></li>
+                    </ul>
+                  </div>
+        </tr>
+        <div class="errorbox alert alert-danger d-flex justify-content-center align-items-center my-2 mx-2"
+            role="alert" *ngIf="errore">{{errore}}
+        </div>
+    </tbody>
+</table>
+<div class="container d-flex justify-content-center ">
+    <nav class="pagecus" aria-label="Page navigation">
+        <pagination-controls class="my-pagination" (pageChange)="pagina = $event" previousLabel="Precedente"
+            nextLabel="Successivo">
+        </pagination-controls>
+    </nav>

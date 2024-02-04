@@ -1,0 +1,33 @@
+<div class="row d-flex justify-content-center row-cols-4">
+        <div class=" col my-5" *ngFor="let product of products | paginate : { itemsPerPage: righe, currentPage: pagina }">
+            <div class="cardcus">
+
+                <div class="img-container">
+                    <img class="img-wrapper" src="{{product.ImageUrl}}">
+                </div>
+
+                <div class="card-body text-center my-3 truncate-text ">
+                    <a href="#" class="title text-truncate">{{product.descrizione}}</a>
+                    <div class="my-3">
+                        Prezzo: {{product.prezzo | currency : 'EUR'}}
+                    </div>
+                    <div class="my-2">
+                        Quantità: {{product.qta}} {{product.um}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    <div class="container d-flex justify-content-center ">
+       <nav class="pagecus" aria-label="Page navigation">
+            <pagination-controls
+            class="my-pagination"
+            (pageChange)="pagina = $event"
+            previousLabel="Precedente"
+            nextLabel="Successivo">
+        </pagination-controls>
+        </nav>
+    </div>
+ 

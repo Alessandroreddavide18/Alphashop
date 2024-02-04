@@ -1,0 +1,109 @@
+<div class="imgheader">
+</div>
+
+<section class="content-main d-flex justify-content-center align-items-center">
+
+	<div class="card mb-4 form-cus">
+    	<div class="card-body">
+
+
+			<div class="alert alert-success alert-dismissible fade show text-center"   *ngIf="msgupdate">
+				{{ msgupdate }}
+			  </div>
+			  
+    <!-- <form> -->
+		<!-- Codice, Barcode -->
+		<div class="row gx-2">
+			<div class="col-sm-6 mb-3">
+				<label for="codArt" class="form-label">Codice Articolo:</label>
+				<input id="codArt"  type="text" placeholder="" class="form-control" [(ngModel)]="articolo.codArt" >
+			</div>
+			<div class="col-sm-6 mb-3">
+				<label for="ean" class="form-label">Barcode:</label>
+				<input id="ean" disabled  type="text" placeholder="" class="form-control"  value="{{Ean}}">
+			</div>
+		</div>
+
+		<!--Descrizione -->
+    <div class="mb-4">
+			<label class="form-label">Descrizione Articolo</label>
+			<textarea placeholder="" class="form-control" rows="2" [(ngModel)]="articolo.descrizione"></textarea>
+		</div>
+
+		<!--Unità di misura, Iva -->
+        <div class="row gx-2">
+			<div class="col-sm-6 mb-3">
+				<label class="form-label">Unità di Misura</label>
+				<select class="form-select" [(ngModel)]="articolo.um">
+					<option value="PZ"> Pezzi </option>
+					<option value="LT"> Litri </option>
+					<option value="KG"> Kilogrammi </option>
+				</select>
+			</div>
+			<div class="col-sm-6 mb-3">
+				<label class="form-label">Iva</label>
+				<select class="form-select">
+					<option [ngValue]="iva.idIva" *ngFor="let iva of Iva">{{iva.descrizione}}</option>					
+				</select>
+			</div>
+		</div> <!-- row.// -->
+
+		<!-- Pezzi per cartone, Peso, Prezzo, Valuta -->
+        <div class="mb-4">
+        	<label class="form-label">Pezzi Per Cartone: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Peso Netto:</label>
+            <div class="row gx-2">
+            <div class="col-3">
+				<input placeholder="Pezzi" type="text" class="form-control" [(ngModel)]="articolo.pzCart">
+            </div>
+            <div class="col-3">
+            	<input placeholder="Peso" type="text" class="form-control" [(ngModel)]="articolo.pesoNetto">
+            </div>
+            <div class="col-4">
+				<input placeholder="Prezzo" type="text" class="form-control">
+			</div>
+			<div class="col-2">
+				<select class="form-select">
+					<option> EUR </option>
+					<option> USD </option>
+					<option> GBP </option>
+				</select>
+			</div>
+          </div>
+        </div>
+
+		<!-- Categoria, Stato Articolo -->
+        <div class="row gx-2">
+			<div class="col-sm-6 mb-3">
+				<label class="form-label">Categoria:</label>
+				<select class="form-select">
+					<option [ngValue]="categoria.id" *ngFor="let categoria of Cat">{{categoria.id}} - {{categoria.descrizione}}</option>
+				</select>
+			</div>
+				<div class="col-sm-6 mb-3">
+				<label class="form-label">Stato:</label>
+				<select class="form-select" [(ngModel)]="articolo.idStatoArt">
+					<option value=1> Attivo </option>
+					<option value=2> Sospeso </option>
+					<option value=3> Eliminato </option>
+				</select>
+				</div>
+		</div> <!-- row.// -->
+
+		<!-- Immagine -->
+		<div class="mb-4">
+			<label class="form-label">Immagine:</label>
+			<input class="form-control" type="file">
+		</div>
+
+      <br>
+      <div class="d-flex align-items-center justify-content-center">
+          <button class="btn btn-outline-orange" (click)="salva()">Salva Articolo</button>
+      </div>
+
+
+    <!-- </form> -->
+
+    </div>
+</div>
+
+</section>
